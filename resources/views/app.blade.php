@@ -15,7 +15,7 @@
         @vite(['resources/sass/app.scss','resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body>
+    <body dir="rtl">
         @inertia
     </body>
 </html>
