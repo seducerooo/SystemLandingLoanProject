@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoanApllicationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +16,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/loan',[LoanApllicationController::class,'index'])->middleware(['auth', 'verified'])->name('loan.index');
+Route::get('/loan/information',[LoanApllicationController::class,'information'])->middleware(['auth', 'verified'])->name('loan.information');
+Route::get('/loan/eschedule',[LoanApllicationController::class,'eschedule'])->middleware(['auth', 'verified'])->name('loan.eschedule');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
